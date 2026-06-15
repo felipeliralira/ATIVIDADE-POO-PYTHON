@@ -1,14 +1,12 @@
 from produto import Produto
-from produto import Cliente
 
 
-cafe = Produto("123456789", "Café", 10.0, 100)
-acucar = Produto("987654321", "Açúcar", 20.0, 50)
+cafe = Produto("1234567890123", "Café", 10.0, 100)
+acucar = Produto("1234555890123", "Açúcar", 20.0, 50)
 
-cliente1 = Cliente("João", "123.456.789-00", 100.0)
 
-print(cafe.retornar_estoque)
-print(cafe.retornar_codigo)
+resultado_cafe = Produto.validar_codigo_barras(cafe.codigo)
+print(f"O código do {cafe.nome} é válido? {resultado_cafe}")
 
-cliente1.adicionar_ao_carrinho(cafe, 2)
-print(cliente1.carrinho)
+resultado_acucar = Produto.validar_codigo_barras(acucar.codigo)
+print(f"O código do {acucar.nome} é válido? {resultado_acucar}")
