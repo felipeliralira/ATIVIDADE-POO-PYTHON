@@ -57,22 +57,17 @@ class Cliente:
         print("Se deseja continuar (1) | Cancelar Compra(0)")
         valDigitado = int(input("Digite um número"))
 
-        while valDigitado not in 1 :
+        # pra se a pessoa digitar outro valor que não seja 1 ou 0,
+        # ele vai pedir pra digitar novamente
+        while valDigitado not in [1, 0]:
             print("Valor Inválido! Tente novamente")
             valDigitado = int(input("Digite um número"))
 
-
-            
         if valDigitado == 1:
             if self.__saldo < valor_total:
                 print(f'Não foi possível realizar a compra. Saldo insuficiente (Saldo atual: R${self.__saldo})')
-            
-            if produto.diminuir_estoque(quantidade):
-                self.__saldo -= valor_total  
-                print(f'A compra foi realizada com sucesso! Novo saldo de {self.__nome}: R${self.__saldo}')
             else:
-                print(f'Não foi possível realizar a compra. Estoque insuficiente de {produto.nome}.')
+                self.__saldo -= valor_total
+                produto.estoque -= quantidade
+                print(f'Compra realizada com sucesso! Novo saldo: R${self.__saldo}. Estoque restante de {produto.nome}: {produto.estoque}')
         else: print("Volte sempre!")
-
-        
-        
